@@ -2,14 +2,15 @@ class Solution {
 public:
     int findDuplicate(vector<int>& nums)
     {
-        sort(nums.begin(),nums.end());
-
-        for(int i=0;i+1<nums.size();i++)
+        for(int i=0;i<nums.size();i++)
         {
-            if(nums[i]==nums[i+1])
-            return nums[i];
+            int ind=abs(nums[i])-1;
+            
+            if(nums[ind]<0)
+                return abs(nums[i]);
+            else
+                nums[ind]=-nums[ind];
         }
-        
-        return 0;
+        return -1;
     }
 };
